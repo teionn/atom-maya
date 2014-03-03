@@ -1,0 +1,18 @@
+# See https://atom.io/docs/latest/creating-a-package#menus for more details
+'context-menu':
+  '.overlayer':
+      'Enable maya': 'maya:toggle'
+      'Script executed': 'maya:run'
+
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'maya'
+      'submenu': [
+        { 'label': 'Toggle', 'command': 'maya:toggle' }
+        { 'label': 'Run', 'command': 'maya:run' }
+      ]
+    ]
+  }
+]
