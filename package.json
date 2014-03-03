@@ -1,15 +1,16 @@
 {
   "name": "Maya",
   "main": "./lib/maya",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": true,
   "description": "Run python scripts from atom to Maya.",
-  "activationEvents": ["maya:run"],
+  "activationEvents": [
+    "maya:run"
+  ],
   "repository": "https://github.com/davidpaulrosser/atom-maya",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
