@@ -39,6 +39,8 @@ def SendToMaya(options):
     client.send(command_tpl)
     data = client.recv(1024)
 
+    print(data)
+
     client.close()
 
 if __name__=='__main__':
