@@ -25,6 +25,12 @@ module.exports =
         # Get the active pane file path
         file = atom.workspaceView.getActivePaneItem().getPath()
 
+        if not file.match '.py'
+            @updateStatusView "Error: Not a python file"
+            atom.workspaceView.trigger 'maya:show'
+            atom.workspaceView.trigger 'maya:hide'
+            return
+
         HOST = atom.config.get('maya').host
         PORT = atom.config.get('maya').port
 
