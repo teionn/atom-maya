@@ -8,6 +8,7 @@ module.exports = class StatusView extends View
 
     initialize: (serializeState) ->
         atom.workspaceView.command "maya:run", => @show()
+        atom.workspaceView.command "maya:show", => @show()
         atom.workspaceView.command "maya:hide", => @hide()
 
     serialize: ->
