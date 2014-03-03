@@ -33,9 +33,6 @@ If you need to change these settings you can override them in your atom configur
 ## Todo:
 
 * Add selection support
-* Add file type checking
-* Add view statuses for success / errors
-
 
 ## Thanks to
 [Maya Sublime](https://github.com/justinfx/MayaSublime)
