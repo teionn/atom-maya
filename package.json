@@ -5,7 +5,7 @@
   "private": true,
   "description": "Run python scripts from atom to Maya.",
   "activationEvents": ["maya:run"],
-  "repository": "https://github.com/atom/maya",
+  "repository": "https://github.com/davidpaulrosser/atom-maya",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
