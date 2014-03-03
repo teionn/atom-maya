@@ -28,7 +28,7 @@ If you need to change these settings you can override them in your atom configur
 
 ## Running:
 
-1. Open up a python script and press ```cmd-alt-r```.
+1. Open up a python script and press ```ctrl-alt-r```.
 
 ## Todo:
 
