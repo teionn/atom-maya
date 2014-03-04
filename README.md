@@ -2,6 +2,9 @@
 
 Run python scripts from atom to Maya.
 
+## Features:
+
+* Send an entire file or a selection to Maya
 
 ## Installation:
 
@@ -10,7 +13,7 @@ Run python scripts from atom to Maya.
 2. Add the following:
 
 ```
-import maya.cmds as cmds
+import maya.cmds as cmds˜
 
 cmds.commandPort(name=":7005", sourceType="python")
 ```
@@ -26,13 +29,9 @@ If you need to change these settings you can override them in your atom configur
   'port': <port>
 ```
 
-## Running:
+## Usage:
 
-1. Open up a python script and press ```ctrl-alt-r```.
+Open up a python script and press ```ctrl-alt-r``` on the file or a selection.
 
-## Todo:
-
-* Add selection support
-
-## Thanks to
-[Maya Sublime](https://github.com/justinfx/MayaSublime)
+## Thanks to:
+[Maya Sublime](https://github.com/justinfx/MayaSublime) for the inspiration to create this one.
