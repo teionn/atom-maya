@@ -1,8 +1,7 @@
 # See https://atom.io/docs/latest/creating-a-package#menus for more details
 'context-menu':
-  '.overlayer':
-      'Enable maya': 'maya:toggle'
-      'Script executed': 'maya:run'
+  '.workspace':
+      'Send selection to Maya': 'maya:run'
 
 'menu': [
   {
