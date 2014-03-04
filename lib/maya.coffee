@@ -1,6 +1,9 @@
+fs   = require 'fs'
+path = require 'path'
 sys  = require 'sys'
 exec = require('child_process').exec
 StatusView = require './status-view'
+temp = require 'temp'
 
 module.exports =
 
@@ -9,10 +12,14 @@ module.exports =
         # Set defaults
         atom.config.setDefaults("maya", host: '127.0.0.1', port: 7005)
 
+        # Create the status view
         @statusView = new StatusView(state.testViewState)
 
         # Listen for run command
         atom.workspaceView.command "maya:run", => @run()
+
+        # Automatically track and cleanup files at exit
+        temp.track()
 
 
     deactivate: ->
@@ -22,8 +29,21 @@ module.exports =
 
     run: ->
 
-        # Get the active pane file path
-        file = atom.workspaceView.getActivePaneItem().getPath()
+        # Get the current selection
+        selection = atom.workspaceView.getActivePaneItem().getSelectedText()
+
+        if selection.length > 0
+            # Create a tmp file and save the selection
+            @get_tmp_file_for_selection selection, (file) =>
+                @send_to_maya file
+        else
+            # Get the active pane file path
+            file = atom.workspaceView.getActivePaneItem().getPath()
+            @send_to_maya file
+
+        return
+
+    send_to_maya: (file) ->
 
         if not file.match '.py'
             @updateStatusView "Error: Not a python file"
@@ -56,10 +76,25 @@ module.exports =
             else
                 @updateStatusView "Success: Ran in #{ellapsed}s"
 
+            # Cleanup any tmp files created
+            temp.cleanup()
 
             atom.workspaceView.trigger 'maya:hide'
 
 
-
     updateStatusView: (text) ->
         @statusView.update "[atom-maya] #{text}"
+
+
+    get_tmp_file_for_selection: (selection, callback) ->
+
+        temp.mkdir 'atom-maya-selection', (err, dirPath) ->
+
+            inputPath = path.join dirPath, 'command.py'
+
+            fs.writeFile inputPath, selection, (err) ->
+
+                if err?
+                    throw err
+                else
+                    callback inputPath
