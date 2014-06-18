@@ -10,7 +10,7 @@ module.exports =
     activate: (state) ->
 
         # Set defaults
-        atom.config.setDefaults("maya", host: '127.0.0.1', port: 7005)
+        atom.config.setDefaults("maya", host: '127.0.0.1', port: 7005, save_on_run: true )
 
         # Create the status view
         @statusView = new StatusView(state.testViewState)
@@ -28,6 +28,9 @@ module.exports =
     serialize: ->
 
     run: ->
+
+        if atom.config.get('maya').save_on_run
+            atom.workspaceView.trigger 'core:save'
 
         # Get the current selection
         selection = atom.workspaceView.getActivePaneItem().getSelectedText()
@@ -65,8 +68,8 @@ module.exports =
 
         exec cmd, (error, stdout, stderr) =>
 
-            # console.log 'stdout', stdout
-            # console.log 'stderr', stderr
+            #console.log 'stdout', stdout
+            #console.log 'stderr', stderr
 
             ellapsed = (Date.now() - date) / 1000
 
