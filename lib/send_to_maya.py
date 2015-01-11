@@ -31,7 +31,10 @@ def SendToMaya(options):
 
     command_tpl = PY_CMD_TEMPLATE.format('execfile', options.file, options.file)
 
-    ADDR = (options.host,int(options.port))
+    host = options.host.replace('\'', '')
+    port = int(options.port)
+
+    ADDR = (host, port)
 
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client.connect(ADDR)
