@@ -1,11 +1,13 @@
 {
   "name": "Maya",
   "main": "./lib/maya",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "private": true,
   "description": "Run python scripts from atom to Maya.",
   "activationCommands": {
-    "atom-text-editor": ["maya:run"]
+    "atom-text-editor": [
+      "maya:run"
+    ]
   },
   "repository": "https://github.com/davidpaulrosser/atom-maya",
   "license": "MIT",
