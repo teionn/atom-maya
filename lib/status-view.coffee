@@ -1,15 +1,10 @@
 {View} = require 'atom'
 
-module.exports = class StatusView extends View
+module.exports = class StatusView
 
-    @content: ->
-        @div class: 'maya overlay from-top', =>
-            @div "", class: "message"
+    constructor: (serializedState) ->
 
-    initialize: (serializeState) ->
-        atom.workspaceView.command "maya:run", => @show()
-        atom.workspaceView.command "maya:show", => @show()
-        atom.workspaceView.command "maya:hide", => @hide()
+        @element = document.createElement('div')
 
     serialize: ->
 
@@ -18,16 +13,7 @@ module.exports = class StatusView extends View
 
     update: (text) ->
         # Update the message
-        @[0].firstChild.innerHTML = text
+        @element.innerHTML = text
 
-    show: ->
-        if not @hasParent()
-            atom.workspaceView.append(this)
-
-
-    hide: =>
-
-        callback = =>
-            @detach() if @hasParent()
-
-        setTimeout( callback, 2500 )
+    getElement: ->
+      @element

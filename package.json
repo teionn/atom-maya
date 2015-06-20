@@ -4,9 +4,9 @@
   "version": "0.9.0",
   "private": true,
   "description": "Run python scripts from atom to Maya.",
-  "activationEvents": [
-    "maya:run"
-  ],
+  "activationCommands": {
+    "atom-text-editor": ["maya:run"]
+  },
   "repository": "https://github.com/davidpaulrosser/atom-maya",
   "license": "MIT",
   "engines": {
