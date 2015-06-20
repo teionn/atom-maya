@@ -1,7 +1,7 @@
 {
   "name": "Maya",
   "main": "./lib/maya",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "private": true,
   "description": "Run python scripts from atom to Maya.",
   "activationCommands": {
