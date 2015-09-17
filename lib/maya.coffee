@@ -73,8 +73,8 @@ module.exports =
         HOST = atom.config.get('maya').host
         PORT = atom.config.get('maya').port
 
-        cmd  = "python #{__dirname}/send_to_maya.py"
-        cmd += " -f #{file}"
+        cmd  = "python \"#{__dirname}/send_to_maya.py\""
+        cmd += " -f \"#{file}\""
         cmd += " -a '#{HOST}'" #h results in a conflict?
         cmd += " -p #{PORT}"
 
@@ -88,7 +88,7 @@ module.exports =
             # console.log 'stderr', stderr
 
             ellapsed = (Date.now() - date) / 1000
-
+            # console.log 'Executing command: ', cmd
             if error?
                 @updateStatusView "Error: #{stderr}"
                 console.error 'error', error
