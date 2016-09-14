@@ -39,7 +39,7 @@ def SendToMaya(options):
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client.connect(ADDR)
 
-    client.send(command_tpl)
+    client.send(command_tpl.encode('utf-8'))
     data = client.recv(1024)
 
     print(data)
