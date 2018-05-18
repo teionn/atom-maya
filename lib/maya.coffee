@@ -66,6 +66,7 @@ module.exports =
         # console.log('send to maya', file)
 
         if not file.match '.py'
+          if not file.match '.mel'
             @updateStatusView "Error: Not a python file"
             @closeModal()
             return
